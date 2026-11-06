@@ -63,11 +63,11 @@ export default function Philosophy() {
       id="philosophy"
       className="relative bg-baa-night overflow-hidden py-28 md:py-44 px-6 md:px-20"
     >
-      {/* Parallax texture background — Atelier de couture, mètre ruban, tissus et machine à coudre */}
+      {/* Parallax texture background — Atelier de couture authentique : bobines de fil professionnel, ciseaux de coupe, mètre ruban et machine à coudre */}
       <div
-        className="philosophy-bg absolute inset-0 opacity-[0.14] scale-110 pointer-events-none"
+        className="philosophy-bg absolute inset-0 opacity-[0.16] scale-110 pointer-events-none"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1544441893-675973e31985?w=1920&q=85&fit=crop')`,
+          backgroundImage: `url('/tailor-workshop-full.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
