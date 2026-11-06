@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Check, X, Star, Smartphone, Zap, Sparkles } from 'lucide-react'
+import { LOGIN_URL } from '../config/links'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -212,15 +213,15 @@ export default function Pricing({ onOpenDownload }) {
                 )}
               </div>
 
-              {/* Action Button */}
+              {/* Action Button - Redirection vers https://baarasobe1.vercel.app/login */}
               <div className="pt-6 border-t border-black/5 mt-auto">
-                <button
-                  onClick={onOpenDownload}
-                  className={`btn-magnetic w-full py-3.5 px-4 rounded-2xl font-bold text-xs md:text-sm transition-all duration-300 shadow-sm ${plan.buttonClass}`}
+                <a
+                  href={LOGIN_URL}
+                  className={`btn-magnetic w-full py-3.5 px-4 rounded-2xl font-bold text-xs md:text-sm transition-all duration-300 shadow-sm flex items-center justify-center text-center ${plan.buttonClass}`}
                 >
                   <span className="btn-bg-slide rounded-2xl bg-black/10" />
                   <span>{plan.buttonLabel}</span>
-                </button>
+                </a>
               </div>
             </div>
           ))}

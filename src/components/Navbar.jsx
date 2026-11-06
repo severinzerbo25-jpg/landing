@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Smartphone } from 'lucide-react'
+import { Download, LogIn } from 'lucide-react'
+import { LOGIN_URL } from '../config/links'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -79,16 +80,30 @@ export default function Navbar({ onOpenDownload }) {
           ))}
         </div>
 
-        {/* CTA Button */}
-        <button
-          onClick={onOpenDownload}
-          className="btn-magnetic hidden md:flex items-center gap-2 bg-baa-terracotta text-white
-            text-sm font-semibold px-5 py-2.5 rounded-full"
-        >
-          <span className="btn-bg-slide bg-baa-night rounded-full" />
-          <Smartphone size={15} />
-          <span>Télécharger</span>
-        </button>
+        {/* Action Buttons */}
+        <div className="hidden md:flex items-center gap-3">
+          <a
+            href={LOGIN_URL}
+            className={`link-lift flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-full border transition-colors ${
+              scrolled
+                ? 'border-baa-terracotta/20 text-baa-charcoal hover:bg-baa-salmon/50'
+                : 'border-white/20 text-white hover:bg-white/10'
+            }`}
+          >
+            <LogIn size={14} />
+            <span>Connexion</span>
+          </a>
+
+          <button
+            onClick={onOpenDownload}
+            className="btn-magnetic flex items-center gap-2 bg-baa-terracotta text-white
+              text-xs font-semibold px-4 py-2.5 rounded-full shadow-sm"
+          >
+            <span className="btn-bg-slide bg-baa-night rounded-full" />
+            <Download size={14} />
+            <span>Télécharger l'APK</span>
+          </button>
+        </div>
 
         {/* Mobile hamburger */}
         <button
@@ -117,13 +132,22 @@ export default function Navbar({ onOpenDownload }) {
               {l.label}
             </a>
           ))}
+          <a
+            href={LOGIN_URL}
+            onClick={() => setMenuOpen(false)}
+            className="flex items-center justify-center gap-2 border border-baa-terracotta/20 text-baa-charcoal text-sm font-semibold px-5 py-2.5 rounded-2xl mt-2 w-full"
+          >
+            <LogIn size={15} />
+            <span>Connexion à l'Atelier</span>
+          </a>
+
           <button
             onClick={() => { setMenuOpen(false); if (onOpenDownload) onOpenDownload(); }}
             className="btn-magnetic flex items-center justify-center gap-2 bg-baa-terracotta
-              text-white text-sm font-semibold px-5 py-3 rounded-2xl mt-2 w-full"
+              text-white text-sm font-semibold px-5 py-3 rounded-2xl w-full"
           >
-            <Smartphone size={15} />
-            <span>Télécharger l'app</span>
+            <Download size={15} />
+            <span>Télécharger l'APK</span>
           </button>
         </div>
       )}

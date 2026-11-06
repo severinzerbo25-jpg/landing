@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Plus, HelpCircle, ChevronDown, MessageCircle, Star, Quote } from 'lucide-react'
+import { WHATSAPP_SUPPORT_URL } from '../config/links'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -156,25 +157,26 @@ export default function TestimonialsAndFAQ() {
             })}
           </div>
 
-          {/* Quick Support banner */}
-          <div className="mt-12 bg-baa-night text-baa-cream rounded-3xl p-6 md:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+          {/* Quick Support banner WhatsApp */}
+          <div className="mt-12 bg-baa-night text-baa-cream rounded-3xl p-6 md:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl border border-baa-terracotta/20">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-baa-terracotta/20 flex items-center justify-center text-baa-terracotta flex-shrink-0">
+              <div className="w-12 h-12 rounded-2xl bg-green-500/20 flex items-center justify-center text-green-400 flex-shrink-0">
                 <MessageCircle size={24} />
               </div>
               <div>
-                <h4 className="font-sans font-bold text-base md:text-lg">Une question spécifique sur votre atelier ?</h4>
-                <p className="text-xs md:text-sm text-baa-cream/60 mt-0.5">Notre équipe d'assistance vous répond directement sur WhatsApp.</p>
+                <h4 className="font-sans font-bold text-base md:text-lg">Une question sur votre atelier ou vos commandes ?</h4>
+                <p className="text-xs md:text-sm text-baa-cream/60 mt-0.5">Notre équipe d'assistance vous répond directement sur WhatsApp au +226 44 55 90 48.</p>
               </div>
             </div>
             <a
-              href="https://wa.me/"
+              href={WHATSAPP_SUPPORT_URL}
               target="_blank"
               rel="noreferrer"
-              className="btn-magnetic px-6 py-3 rounded-full bg-baa-terracotta text-white font-semibold text-sm whitespace-nowrap"
+              className="btn-magnetic px-6 py-3.5 rounded-full bg-[#25D366] text-slate-900 font-bold text-sm whitespace-nowrap flex items-center gap-2 hover:bg-green-400 shadow-md"
             >
-              <span className="btn-bg-slide bg-white/20 rounded-full" />
-              <span>Contacter l'équipe</span>
+              <span className="btn-bg-slide bg-white/30 rounded-full" />
+              <MessageCircle size={17} />
+              <span>Contacter le support WhatsApp</span>
             </a>
           </div>
         </div>

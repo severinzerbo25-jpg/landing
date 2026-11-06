@@ -1,25 +1,25 @@
-import { Globe, Share2, Mail, ExternalLink } from 'lucide-react'
+import { Globe, Share2, Mail, Download, MessageCircle, ExternalLink } from 'lucide-react'
+import { LOGIN_URL, WHATSAPP_SUPPORT_URL } from '../config/links'
 
-export default function Footer() {
+export default function Footer({ onOpenDownload }) {
   const year = new Date().getFullYear()
 
   const navCols = [
     {
       title: 'Produit',
       links: [
-        { label: 'Fonctionnalités', href: '#features' },
-        { label: 'Tarification',   href: '#pricing' },
-        { label: 'Télécharger',    href: '#pricing' },
-        { label: 'Mises à jour',   href: '#' },
+        { label: 'Connexion Atelier', href: LOGIN_URL },
+        { label: 'Fonctionnalités',   href: '#features' },
+        { label: 'Pourquoi Baarasobè',href: '#philosophy' },
+        { label: 'Tarification',      href: '#pricing' },
       ],
     },
     {
-      title: 'Entreprise',
+      title: 'Assistance & Contact',
       links: [
-        { label: 'À propos',       href: '#' },
-        { label: 'Blog',           href: '#' },
-        { label: 'Contact',        href: '#' },
-        { label: 'Partenariats',   href: '#' },
+        { label: 'Support WhatsApp (+226)', href: WHATSAPP_SUPPORT_URL, external: true },
+        { label: 'Questions fréquentes',    href: '#faq' },
+        { label: 'Télécharger l\'APK',      href: '#download', onClick: onOpenDownload },
       ],
     },
     {
@@ -75,21 +75,25 @@ export default function Footer() {
               ))}
             </div>
 
-            {/* App store badges */}
+            {/* Bouton Télécharger APK Direct & WhatsApp Support */}
             <div className="flex flex-wrap gap-3 mt-6">
-              {['App Store', 'Google Play'].map(store => (
-                <a
-                  key={store}
-                  href="#"
-                  className="btn-magnetic inline-flex items-center gap-2 border border-baa-cream/15
-                    text-baa-cream/60 hover:text-baa-cream hover:border-baa-cream/30
-                    text-xs font-mono px-4 py-2.5 rounded-2xl transition-colors"
-                >
-                  <span className="btn-bg-slide bg-baa-terracotta/10 rounded-2xl" />
-                  <ExternalLink size={12} />
-                  <span>{store}</span>
-                </a>
-              ))}
+              <button
+                onClick={onOpenDownload}
+                className="btn-magnetic inline-flex items-center gap-2 bg-baa-terracotta text-white text-xs font-mono px-4 py-2.5 rounded-2xl transition-colors shadow-sm"
+              >
+                <Download size={13} />
+                <span>Télécharger l'APK</span>
+              </button>
+
+              <a
+                href={WHATSAPP_SUPPORT_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-magnetic inline-flex items-center gap-2 border border-[#25D366]/40 bg-[#25D366]/10 text-green-300 hover:text-green-200 text-xs font-mono px-4 py-2.5 rounded-2xl transition-colors"
+              >
+                <MessageCircle size={13} className="text-[#25D366]" />
+                <span>WhatsApp Support</span>
+              </a>
             </div>
           </div>
 

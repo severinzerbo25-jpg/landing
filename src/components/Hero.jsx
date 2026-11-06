@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { Smartphone, ArrowRight } from 'lucide-react'
+import { Download, ArrowRight, LogIn } from 'lucide-react'
+import { LOGIN_URL } from '../config/links'
 
 export default function Hero({ onOpenDownload }) {
   const heroRef   = useRef(null)
@@ -86,24 +87,24 @@ export default function Hero({ onOpenDownload }) {
 
           {/* CTAs */}
           <div ref={ctaRef} className="flex flex-wrap items-center gap-4">
-            <button
-              onClick={onOpenDownload}
+            <a
+              href={LOGIN_URL}
               className="btn-magnetic inline-flex items-center gap-3 bg-baa-terracotta text-white
                 font-semibold text-sm md:text-base px-7 py-4 rounded-full shadow-lg shadow-baa-terracotta/25"
             >
               <span className="btn-bg-slide bg-baa-night rounded-full" />
-              <Smartphone size={18} />
-              <span>Installer l'application</span>
-            </button>
-
-            <a
-              href="#app-preview"
-              className="inline-flex items-center gap-2 text-baa-cream/80 hover:text-baa-cream
-                text-sm font-medium transition-all duration-300 group link-lift"
-            >
-              Voir la démonstration de l'atelier
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              <LogIn size={18} />
+              <span>Lancer mon atelier</span>
             </a>
+
+            <button
+              onClick={onOpenDownload}
+              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-baa-cream
+                text-sm font-medium px-6 py-4 rounded-full border border-white/15 backdrop-blur-sm transition-all duration-300 link-lift"
+            >
+              <Download size={16} className="text-baa-terracotta" />
+              <span>Télécharger l'APK</span>
+            </button>
           </div>
 
           {/* Social proof / Atouts atelier */}
