@@ -63,15 +63,18 @@ export default function Philosophy() {
       id="philosophy"
       className="relative bg-baa-night overflow-hidden py-28 md:py-44 px-6 md:px-20"
     >
-      {/* Parallax texture background — Atelier de couture authentique : bobines de fil professionnel, ciseaux de coupe, mètre ruban et machine à coudre */}
+      {/* Parallax texture background — Véritable machine à coudre mécanique, bobines de fil et mètre ruban (image fournie par l'utilisateur) */}
       <div
-        className="philosophy-bg absolute inset-0 opacity-[0.16] scale-110 pointer-events-none"
+        className="philosophy-bg absolute inset-0 opacity-[0.22] scale-105 pointer-events-none"
         style={{
-          backgroundImage: `url('/tailor-workshop-full.jpg')`,
+          backgroundImage: `url('/sewing-machine-bg.jpg')`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'center 40%',
         }}
       />
+      {/* Overlay dégradé chaud pour fondre parfaitement les bords dans le Brun Nuit (#2C1810) */}
+      <div className="absolute inset-0 bg-gradient-to-t from-baa-night via-baa-night/60 to-baa-night pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-baa-night/90 via-transparent to-baa-night/90 pointer-events-none" />
 
       {/* Warm glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
