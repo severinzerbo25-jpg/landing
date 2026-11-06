@@ -13,3 +13,4 @@ export const WHATSAPP_LINK_REQUEST_URL = `https://wa.me/${WHATSAPP_PHONE}?text=$
 
 // URL de téléchargement direct de l'APK (ou fallback sur l'app web / build APK)
 export const APK_DOWNLOAD_URL = 'https://baarasobe1.vercel.app/baarasobe.apk'
+
