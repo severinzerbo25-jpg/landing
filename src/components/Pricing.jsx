@@ -86,31 +86,57 @@ export default function Pricing({ onOpenDownload }) {
   const cardsRef = useRef(null)
 
   useEffect(() => {
+    // Si GSAP ou ScrollTrigger a un délai ou si la section est déjà dans le viewport
     const ctx = gsap.context(() => {
       if (headRef.current && headRef.current.children.length > 0) {
-        gsap.from(headRef.current.children, {
-          y: 40,
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: headRef.current, start: 'top 85%' },
-        })
+        gsap.fromTo(
+          headRef.current.children,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            stagger: 0.1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: headRef.current,
+              start: 'top 92%',
+              once: true,
+            },
+          }
+        )
       }
 
       if (cardsRef.current && cardsRef.current.children.length > 0) {
-        gsap.from(Array.from(cardsRef.current.children), {
-          y: 60,
-          opacity: 0,
-          duration: 0.9,
-          stagger: 0.12,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: cardsRef.current, start: 'top 85%' },
-        })
+        gsap.fromTo(
+          Array.from(cardsRef.current.children),
+          { y: 40, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: cardsRef.current,
+              start: 'top 92%',
+              once: true,
+            },
+          }
+        )
       }
     }, sectionRef)
 
-    return () => ctx.revert()
+    // Forcer le recalcul ScrollTrigger une fois les polices et images chargées
+    const handleRefresh = () => ScrollTrigger.refresh()
+    window.addEventListener('load', handleRefresh)
+    const timer = setTimeout(handleRefresh, 300)
+
+    return () => {
+      window.removeEventListener('load', handleRefresh)
+      clearTimeout(timer)
+      ctx.revert()
+    }
   }, [])
 
   return (
